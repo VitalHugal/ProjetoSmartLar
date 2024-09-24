@@ -10,3 +10,5 @@ Route::get('/user', function (Request $request) {
 
 
 Route::apiResource('/ambiente', EnviromentController::class);
+Route::post('/ambiente-on-off/{id}', [EnviromentController::class, 'updateStatus']);
+Route::post('/ambiente/{id}', [EnviromentController::class, 'updateName']);

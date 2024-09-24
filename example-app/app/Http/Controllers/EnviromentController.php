@@ -10,11 +10,11 @@ class EnviromentController extends Controller
 {
     protected $enviroment;
 
-    public function __construct(Enviroment $enviroment)
+    public function __construct(Enviroment $enviroment) 
     {
         $this->enviroment = $enviroment;
     }
-
+    
     /**
      * Display a listing of the resource.
      */
@@ -22,10 +22,10 @@ class EnviromentController extends Controller
     {
         $enviroment = $this->enviroment->get();
 
-        if ($enviroment === null) {
+        if ($enviroment === null ) {
             return response()->json(['message' => 'Nenhum resultado encontrado.']);
         }
-
+        
         return response()->json($enviroment);
     }
 
@@ -61,8 +61,8 @@ class EnviromentController extends Controller
         if ($enviroment === null) {
             return response()->json(['message' => 'Nenhum resultado encontrado.']);
         }
-
-        return response()->json($enviroment);
+        
+        return response()->json($enviroment);   
     }
 
     /**
@@ -76,7 +76,7 @@ class EnviromentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function updateName(Request $request, $id)
     {
         $enviroment = Enviroment::find($id);
 
@@ -84,15 +84,10 @@ class EnviromentController extends Controller
             return response()->json(['message' => 'Nenhum resultado encontrado.']);
         }
 
-        if ($request->method === 'patch') {
+        if ($request->isMethod('patch')) {
         }
 
-        $enviroment->fill(
-            $request->validate(
-                $this->enviroment->rules(),
-                $this->enviroment->feedback()
-            )
-        );
+        $enviroment->fill($request->all('name'));
         $enviroment->save();
 
         return response()->json($enviroment);
@@ -112,5 +107,22 @@ class EnviromentController extends Controller
         $enviroment->delete();
 
         return response()->json(['success' => 'Ambiente excluído.']);
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $enviroment = Enviroment::find($id);
+
+        if ($enviroment === null) {
+            return response()->json(['message' => 'Nenhum resultado encontrado.']);
+        }
+
+        if ($request->isMethod('patch')) {
+        }
+
+        $enviroment->fill($request->all('status'));
+        $enviroment->save();
+
+        return response()->json($enviroment);
     }
 }
