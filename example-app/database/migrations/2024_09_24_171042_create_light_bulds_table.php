@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 return new class extends Migration
 {
     /**
@@ -13,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('light_bulds', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 255);
+            $table->integer('status')->default(value: 0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
