@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LightBuldController;
+use App\Http\Controllers\EnviromentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::apiResource('/lampada', LightBuldController::class);
+Route::apiResource('/ambiente', EnviromentController::class);
