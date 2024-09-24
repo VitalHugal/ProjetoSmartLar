@@ -10,11 +10,11 @@ class EnviromentController extends Controller
 {
     protected $enviroment;
 
-    public function __construct(Enviroment $enviroment) 
+    public function __construct(Enviroment $enviroment)
     {
         $this->enviroment = $enviroment;
     }
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -22,10 +22,10 @@ class EnviromentController extends Controller
     {
         $enviroment = $this->enviroment->get();
 
-        if ($enviroment === null ) {
+        if ($enviroment === null) {
             return response()->json(['message' => 'Nenhum resultado encontrado.']);
         }
-        
+
         return response()->json($enviroment);
     }
 
@@ -61,8 +61,8 @@ class EnviromentController extends Controller
         if ($enviroment === null) {
             return response()->json(['message' => 'Nenhum resultado encontrado.']);
         }
-        
-        return response()->json($enviroment);   
+
+        return response()->json($enviroment);
     }
 
     /**
