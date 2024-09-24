@@ -18,7 +18,7 @@ class Enviroment extends Model
     {
         return [
             'name' => 'required',
-            'status' => 'required|in:0,1',
+            'status' => 'in:0,1',
         ];
     }
     
@@ -26,7 +26,6 @@ class Enviroment extends Model
     {
         return [
             'name.required' => 'Campo nome é obrigatório.',
-            'status.required' => 'Campo status é obrigatório.',
             'status.in' => 'Valido apenas 0 ou 1 para esse campo.',
         ];
     }

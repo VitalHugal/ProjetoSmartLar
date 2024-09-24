@@ -10,11 +10,11 @@ class EnviromentController extends Controller
 {
     protected $enviroment;
 
-    public function __construct(Enviroment $enviroment) 
+    public function __construct(Enviroment $enviroment)
     {
         $this->enviroment = $enviroment;
     }
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -25,7 +25,7 @@ class EnviromentController extends Controller
         if ($enviroment === null) {
             return response()->json(['message' => 'Nenhum resultado encontrado.']);
         }
-        
+
         return response()->json($enviroment);
     }
 
@@ -61,8 +61,8 @@ class EnviromentController extends Controller
         if ($enviroment === null) {
             return response()->json(['message' => 'Nenhum resultado encontrado.']);
         }
-        
-        return response()->json($enviroment);   
+
+        return response()->json($enviroment);
     }
 
     /**
@@ -84,13 +84,15 @@ class EnviromentController extends Controller
             return response()->json(['message' => 'Nenhum resultado encontrado.']);
         }
 
-        $enviroment = $request->validate($this->enviroment->rules(), $this->enviroment->feedback());
-
         if ($request->method === 'patch') {
-            # code...
         }
 
-        $enviroment = $request->fill($request->all());
+        $enviroment->fill(
+            $request->validate(
+                $this->enviroment->rules(),
+                $this->enviroment->feedback()
+            )
+        );
         $enviroment->save();
 
         return response()->json($enviroment);
