@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('light_bulds', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->integer('status')->default(value: 0);
+            $table->integer('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

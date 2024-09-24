@@ -18,7 +18,7 @@ class LightBuld extends Model
     {
         return [
             'name' => 'required|',
-            'status' => 'required|integer|in:0,1'
+            'status' => '|in:0,1'
         ];
     }
 
@@ -26,7 +26,6 @@ class LightBuld extends Model
     {
         return [
             'name.required' => 'Campo nome obrigatório.',
-            'status.required' => 'Campo status obrigatório.',
             'status.in' => 'Válido apenas 0 ou 1 nesse campo.',
         ];
     }
