@@ -48,6 +48,10 @@ class EnviromentController extends Controller
             'name' => $request->name,
         ]);
 
+        if (!$this->enviroment->create) {
+            return response()->json(['error' => 'Houve algum erro na criação do ambiente, tente novamente.']);
+        }
+
         return response()->json($enviroment);
     }
 
