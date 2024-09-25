@@ -17,7 +17,7 @@ class Enviroment extends Model
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:255',
             'status' => 'in:0,1',
         ];
     }
@@ -27,6 +27,7 @@ class Enviroment extends Model
         return [
             'name.required' => 'Campo nome é obrigatório.',
             'status.in' => 'Valido apenas 0 ou 1 para esse campo.',
+            'name.max' => 'Campo nome deve ter até 255 caracteres.',
         ];
     }
 }

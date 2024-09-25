@@ -86,8 +86,16 @@ class EnviromentController extends Controller
 
         if ($request->isMethod('patch')) {
         }
-
+        
         $enviroment->fill($request->all('name'));
+
+        if (strlen($request->name) > 255) {
+            return response()->json(['error' => 'Campo nome deve ter até 255 caracteres.']);
+        }
+        elseif ($request->name === null) {
+            return response()->json(['error' => 'Campo nome é obrigatório.']);
+        }
+        
         $enviroment->save();
 
         return response()->json($enviroment);
@@ -121,6 +129,11 @@ class EnviromentController extends Controller
         }
 
         $enviroment->fill($request->all('status'));
+
+        if ($request->status != '1' && $request->status != '0') {
+            return response()->json(['error' => 'Valido apenas 0 ou 1 para esse campo.']);
+        }
+        
         $enviroment->save();
 
         return response()->json($enviroment);
