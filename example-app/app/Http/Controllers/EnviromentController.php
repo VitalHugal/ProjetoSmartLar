@@ -14,7 +14,7 @@ class EnviromentController extends Controller
     {
         $this->enviroment = $enviroment;
     }
-
+    
     /**
      * Display a listing of the resource.
      */
@@ -49,7 +49,7 @@ class EnviromentController extends Controller
         ]);
 
         if (!$this->enviroment->create) {
-            return response()->json(['error' => 'Houve algum erro na criação do ambiente, tente novamente.']);
+            return response()->json(['error' => 'Houve algum problema na criação do ambiente, tente novamente.']);
         }
 
         return response()->json($enviroment);
